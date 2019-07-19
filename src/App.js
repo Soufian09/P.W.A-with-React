@@ -1,17 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Bienvenue les woods</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p> 1,2, .. 1,2 test pwa</p>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import "./App.css"
+import Acceuil from "./components/Acceuil";
+import Stuff from "./components/cadre";
+import Contact from "./components/contact";
+ 
+class App extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <div>
+          <h1>Autrement ASBL</h1>
+          <ul className="header">
+            <li><NavLink to="/">Acceuil</NavLink></li>
+            <li><NavLink to="/stuff">Stuff</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+          </ul>
+          <div className="content">
+            <Route exact path="/" component={Acceuil}/>
+            <Route path="/stuff" component={Stuff}/>
+            <Route path="/contact" component={Contact}/>  
+          </div>
+        </div>
+      </HashRouter>
+    );
+  }
 }
-
-export default App;
+ 
+export default App
